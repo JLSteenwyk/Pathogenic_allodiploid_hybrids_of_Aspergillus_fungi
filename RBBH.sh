@@ -1,9 +1,5 @@
 # usage:
 # bash RBBH.bash A.fasta B.fasta
-#
-# explanation:
-# this script calculates average protein sequence similarity using reciprocal 
-# best blast hits between two genomes using a reciprocal best blast hit approach
 
 ### Step 00
 ## store arguments as variables
