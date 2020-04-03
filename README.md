@@ -55,7 +55,7 @@ Sofware: [OrthoFinder](https://github.com/davidemms/OrthoFinder/releases)<br />
 
 ### Sequence alignment and trimming
 To align and trim sequences for downstream analysis, we first created nucleotide multi-fasta files of single copy orthologous genes predicted by OrthoFinder. Then, we aligned and trimmed the sequences in the multi-fasta files using the commands shown here.<br />
-Software:[Mafft](https://mafft.cbrc.jp/alignment/software/), [trimAl](http://trimal.cgenomics.org/)<br />
+Software: [Mafft](https://mafft.cbrc.jp/alignment/software/), [trimAl](http://trimal.cgenomics.org/)<br />
 ```
 # Sequence alignment
 mafft --maxiterate 1000 --genafpair input > output 
@@ -72,7 +72,7 @@ Software: [biopython](https://biopython.org/)
 python create_concat_matrix.py -a alignment.list -c sequence_character -t taxa.list -p output_prefix
 ```
 Original author: [Jacob Steenwyk](https://jlsteenwyk.github.io/)
-<br />
+<br /><br />
 
 ### Genome-scale phylogenies of each parental genome and topology tests
 Genome-scale phylogenies to predict the evolutionary history of each subgenome were examined using the exemplary command described here.<br />
