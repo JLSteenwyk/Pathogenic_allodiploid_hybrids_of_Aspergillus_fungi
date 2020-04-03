@@ -1,0 +1,60 @@
+###################
+QUICK GUIDE:
+
+order genes in pep and cds file to be the same prior to executing script
+then execute the following command:
+./execute.sh
+
+change control file line so that there are a total of six columns
+col1: spp1 short name
+col2: spp1.cds
+col3: spp1.pep
+col4: spp2 short name
+col5: spp2.cds
+col6: spp2.pep
+
+example:
+col1: Tcaseinolytica 
+col2: tortispora_caseinolytica.max.cds 
+col3: tortispora_caseinolytica.max.pep 
+col4: Tganteri 
+col5: yHMPu5000035654_tortispora_ganteri_160519.max.cds 
+col6: yHMPu5000035654_tortispora_ganteri_160519.max.pep
+Example FA files to conduct this analysis can be found in the scripts folder
+
+
+###################
+DETAILED GUIDE AND EXPLANATION:
+
+CTL file columns:
+col1: the short name for spp1 where spp1 is the	putative hybrid	of interest
+col2: cds file that has	genes in the same order	as the pep file
+col3: pep file that has	genes in the same order	as the cds file
+col4: the short name for spp2 where spp2 is the	sister species to spp1     
+col5: cds file that has	genes in the same order	as the pep file
+col6: pep file that has	genes in the same order as the cds file
+
+each fasta file should have each line of sequences have the same number of characters
+For example you cannot have the following:
+>not_acceptable
+ATCGAGCGAACTAGCATCAGACT
+ACTCGCACACACACA
+CGTACGGCATACGCA
+
+In contrast, the following is acceptable
+>acceptable
+ACGTACGTAGCAGCACT
+ACTAGCATCAGCATCAC
+ACTACGAGCGACTACGT
+
+Concept of analyses:
+The idea here is that one of the hybrid	parents	was most likely	very similar to	the sister species
+and the	other parent is	likely disimilar. Therefore, after calculating Ks for each BBH between the 
+two species of interest, there will be a bimodal distribution indicative of one	half of	the                            
+distribution being from	parent A and the other from parent B.
+
+The following steps of analyses are performed to do the analysis:
+1) split up spp1 multi-gene pep file and singly blast each gene to the sister species (spp2) 
+   to obtain a best blast hit (BBH) per gene
+2) create mfastas for each gene pair, align the sequences and convert to codons
+3) calculate Ks for each gene pair

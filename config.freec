@@ -1,0 +1,20 @@
+[general]
+chrLenFile = ./path to file that contains the length of each scaffold
+chrFiles = ./path to directory of scaffold fasta files -- one fasta file per scaffold
+window = 500
+
+step = 500
+ploidy = 1
+outputDir = .
+breakPointType=2
+telocentromeric = 10000
+
+minExpectedGC = 0.3
+maxExpectedGC = 0.5
+
+maxThreads = 24
+
+[sample]
+mateFile = ./path to input sorted bam file
+inputFormat = BAM
+mateOrientation = FR
