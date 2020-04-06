@@ -21,28 +21,33 @@ Software: [Control-FREEC](http://boevalab.inf.ethz.ch/FREEC/)<br />
 freec -conf config.freec |& tee freec.log
 ```
 <br />
-In addition to using Control-FREEC, we assessed if CNVnator was an accurate software for our case. To do so, we used the following wrapper script to run CNVnator. 1st agrument should be the root file; 2nd argument should be the tree file; 3rd argument should be the genome file; 4th argument should be the scaffolds directory path; 5th argument should be the window size<br />
+In addition to using Control-FREEC, we assessed if CNVnator was an accurate software for our case. To do so, we used the following wrapper script to run CNVnator. 1st agrument should be the root file; 2nd argument should be the tree file; 3rd argument should be the genome file; 4th argument should be the scaffolds directory path; 5th argument should be the window size.<br />
 Software: [CNVnator](https://github.com/abyzovlab/CNVnator)<br />
 ```
 bash CNVnator_wrapper.sh file.root ./path_to_sorted_bam_file ./path_to_file_with_scaffold_lengths ./path_to_directory_with_scaffolds window_size
 ```
 <br />
 
-### AUGUSTUS PLACE HOLDER 
+### Predicting gene boundaries 
+Augustus is a powerful and popular tool for predicting gene boundaries. We ran augustus with default parameters with species training on <i>Aspergillus nidulans</i>.<br />
+Software: [Augustus](http://augustus.gobics.de/)<br />
 <br />
 ```
-```
-<br />
-
-### iWGS PLACE HOLDER 
-<br />
-```
+augustus --species=aspergillus_nidulans
 ```
 <br />
 
-### RAxML PLACE HOLDER 
+### Genome assembly 
+To simply the genome assembly process, we used the wrapper utility iWGS. iWGS was run with the recommended default parameters using Kmergenie, Trimmomatic, SPAdes, MaSuRCA, and QUAST.<br />
+Software: [iWGS](https://github.com/zhouxiaofan1983/iWGS)<br />
 <br />
+
+### Strain determination using taxonomically informative loci
+To determine the evolutionary history of taxonomically informative loci -- i.e., determine that the parents of the hybrids are <i>Aspergillus spinulosporus</i> and a close relative of <i>Aspergillus quadrilineatus</i> -- we used the maximum likelihood software RAxML. To determine bipartition support, we used rapid bootstrap analysis. Below we provide an exemplary command used during tree search.<br /> 
+Software: [RAxML](https://cme.h-its.org/exelixis/web/software/raxml/)<br />
+
 ```
+raxmlHPC -f a -m GTRGAMMAX -x 12345 -p 12345 -N 1000
 ```
 <br />
 
